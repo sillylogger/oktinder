@@ -1,0 +1,55 @@
+.match {
+  border-bottom: 2px solid lightgrey;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.name,
+.age {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.age {
+  font-size: 1rem;
+}
+
+.bio {
+  margin-bottom: 1rem;
+  font-family: serif;
+}
+
+.thumbnails {
+  width: 100%;
+  overflow: hidden;
+}
+
+.thumbnail {
+  margin-right: 1rem;
+  float: left;
+  overflow: hidden;
+  display: block;
+}
+
+.thumbnail_img {
+  max-width: 5rem;
+  max-height: 5rem;
+}
+
+.thumbnail_footer {
+}
+
+.thumbnail_selectRate,
+.thumbnail_successRate {
+  display: block;
+}

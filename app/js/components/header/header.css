@@ -1,0 +1,15 @@
+.header {
+  border-bottom: 1px solid rgb(245, 89, 89);
+  padding: 15px 30px 10px;
+}
+
+.title {
+  color: rgb(245, 89, 89);
+  font-size: 24px;
+  display: inline-block;
+}
+
+.subtitle {
+  margin-left: 0.75em;
+  display: inline-block;
+}
