@@ -19,7 +19,13 @@ def headers
   }
 end
 
-json = updates token
+unless File.exists? 'updates.json'
+  json = updates ''
+
+  File.open 'updates.json', 'w' do |f|
+    f.write json.to_json
+  end
+end
 
 #
 # I dont want to like everyone *just* yet.

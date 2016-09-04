@@ -1,4 +1,4 @@
-def updates token, last_activity_date = '2016-09-02T19:02:52.834Z'
+def updates last_activity_date = '2016-09-02T19:02:52.834Z'
   options = HTTP::Options.new(
     headers: headers,
     json: {
