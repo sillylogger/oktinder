@@ -27,7 +27,7 @@ export class Content extends React.Component {
           data={this.props.data.matches}
           setActiveItemIndex={this.setActiveItemIndex.bind(this)} />
       </div>
-    )
+    );
   }
 }
 
