@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var chalk = require('chalk');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -13,49 +14,47 @@ var path       = require('path');
 var fs         = require('fs-extra');
 var liveServer = require('live-server');
 
-var opts = {
-  entries: "./js/app.js",
-  debug: true
-};
-
-var b, once = false;
-
-function bundle() {
-  if(!once) {
-    b.transform("babelify", { presets: ["es2015", "react"] })
-
-    b.plugin(require('css-modulesify'), {
-      rootDir: __dirname,
-      output: './output/app.css'
-    });
-
-    once = true;
+function prepareBundler({ watch = false } = {}) {
+  var options = { debug: true };
+  if(watch) {
+    options = Object.assign(options, watchify.args)
   }
 
-  return b.bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe(gulp.dest("./output"));
+  var b = browserify("./js/app.js", options);
+  b.transform("babelify", { presets: ["es2015", "react"] })
+  b.plugin(cssmodule, {
+    rootDir: __dirname,
+    output: './output/app.css'
+  });
+
+  if(watch) {
+    b.plugin(watchify);
+    b.on('log', gutil.log);
+    b.on('update', () => bundle(b) );
+  }
+
+  return b;
 }
 
-gulp.task('js', function(){
-  b = browserify(opts);
-  b.on('log', gutil.log);
-  b.on('update', bundle);
-  b.on('error', gutil.log.bind(gutil, 'Browserify Error'))
-  return bundle();
+function bundle(b) {
+  return b.bundle()
+          .on('error', (err) => gutil.log(chalk.red(err.name) + ': ' + chalk.yellow(err.message)))
+          .pipe(source('app.js'))
+          .pipe(buffer())
+          .pipe(gulp.dest("./output"));
+}
+
+gulp.task('compile', function(){
+  var bundler = prepareBundler();
+  return bundle(bundler);
 });
 
-gulp.task('js:watch', function(){
-  b = watchify(browserify(opts));
-  b.on('log', gutil.log);
-  b.on('update', bundle);
-  b.on('error', gutil.log.bind(gutil, 'Browserify Error'))
-  return bundle();
+gulp.task('watch', function(){
+  var bundler = prepareBundler({ watch: true });
+  return bundle(bundler);
 });
 
-
-gulp.task('serve', function() {
+gulp.task('package', function() {
   var templateLocation = path.join('template.html');
   var template = fs.readFileSync(templateLocation, 'utf8');
 
@@ -63,7 +62,9 @@ gulp.task('serve', function() {
   var result = template.replace(/\{data\}/, data);
 
   fs.writeFile(path.join('index.html'), result);
+});
 
+gulp.task('serve', function() {
   liveServer.start({
     port: 4321,
     root: '.',
@@ -75,4 +76,5 @@ gulp.task('serve', function() {
   console.log('Running on http://0.0.0.0:4321');
 });
 
+gulp.task('default', ['compile', 'package', 'serve']);
 
