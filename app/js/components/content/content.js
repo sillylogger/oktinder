@@ -7,16 +7,6 @@ export class Content extends React.Component {
 
   constructor(props) {
     super(props)
-
-    this.state = {
-      activeItemIndex: -1
-    }
-  }
-
-  setActiveItemIndex(activeItemIndex) {
-    this.setState({
-      activeItemIndex: activeItemIndex
-    })
   }
 
   // <Photos data={this.props.data.matches} />
@@ -24,9 +14,7 @@ export class Content extends React.Component {
   render() {
     return (
       <div className={styles.content}>
-        <Matches
-          data={this.props.data.matches}
-          setActiveItemIndex={this.setActiveItemIndex.bind(this)} />
+        <Matches data={this.props.data.matches} />
       </div>
     );
   }

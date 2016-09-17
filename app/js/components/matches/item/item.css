@@ -1,7 +1,11 @@
-.match {
+.match,
+.active_match {
   border-bottom: 2px solid lightgrey;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
+}
+
+.active_match {
+  background: #F8F8F8;
 }
 
 .header {

@@ -68,7 +68,9 @@ export class MatchesItem extends React.Component {
   }
   */
 
-  setActive() { }
+  setActiveMatch(e) {
+    this.props.setActiveMatch(this);
+  }
 
   render() {
     let person = this.props.data.person;
@@ -77,8 +79,10 @@ export class MatchesItem extends React.Component {
       return <Thumbnail key={index} data={photo} />;
     });
 
+    let matchStyle = this.props.active ? styles.active_match : styles.match;
+
     return (
-      <article className={styles.match}>
+      <article className={matchStyle} onClick={this.setActiveMatch.bind(this)}>
         <header className={styles.header}>
           <h3 className={styles.name}>{person.name}</h3>
           <time className={styles.age} data={person.birth_date}>{moment(person.birth_date).fromNow(true)} old</time>
