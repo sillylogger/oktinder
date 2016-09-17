@@ -1,3 +1,5 @@
+#! /usr/bin/env ruby
+
 require 'bundler'
 Bundler.require(:default)
 
@@ -19,12 +21,26 @@ def headers
   }
 end
 
-unless File.exists? 'updates.json'
+filename = 'updates.json'
+one_day_ago = Time.now - 60 * 60 * 24
+
+if !File.exists?(filename) ||
+    File.ctime(filename) < one_day_ago
+
+  puts "I am going to update.json"
+
   json = updates ''
 
-  File.open 'updates.json', 'w' do |f|
+  File.delete(filename) if File.exists?(filename)
+
+  File.open filename, 'w' do |f|
     f.write json.to_json
   end
+
+else
+
+  puts "I am not going to update.json"
+
 end
 
 #
