@@ -16,6 +16,8 @@ class Page extends React.Component {
 
 }
 
+// https://fritz-c.github.io/react-image-lightbox/
+
 window.render = function(data){
   ReactDOM.render(
     <Page data={data} />,

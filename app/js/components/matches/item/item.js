@@ -1,4 +1,5 @@
 import React from "react"
+import {Thumbnail} from "../../thumbnail/thumbnail.js"
 import moment from "moment"
 import styles from "./item.css"
 
@@ -67,34 +68,14 @@ export class MatchesItem extends React.Component {
   }
   */
 
-  setActive() {
-  }
+  setActive() { }
 
   render() {
     let person = this.props.data.person;
 
-    if(person === undefined) {
-      console.log("no person!", this.props.data);
-      return null;
-    }
-
     let thumbnails = person.photos.map(function(photo, index) {
-      let footer = null;
-
-      if(photo.selectRate || photo.successRate) {
-        footer = <footer className={styles.thumbnail_footer}>
-                  <span className={styles.thumbnail_selectRate}>Select: {this.round(photo.selectRate)}</span>
-                  <span className={styles.thumbnail_successRate}>Success: {this.round(photo.successRate)}</span>
-                </footer>;
-      }
-
-      return (
-            <figure key={index} className={styles.thumbnail}>
-              <img src={photo.url} alt={photo.fileName} className={styles.thumbnail_img} />
-              {footer}
-            </figure>
-          );
-    }.bind(this));
+      return <Thumbnail key={index} data={photo} />;
+    });
 
     return (
       <article className={styles.match}>
@@ -109,7 +90,4 @@ export class MatchesItem extends React.Component {
     );
   }
 
-  round(value) {
-    return Math.round(100 * value) / 100;
-  }
 }
