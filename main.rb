@@ -4,8 +4,8 @@ require 'bundler'
 Bundler.require(:default)
 
 require './config'
-require './gettoken'
-require './updates'
+require './api/auth'
+require './api/updates'
 
 @token = gettoken["token"]
 
