@@ -11,7 +11,7 @@ export class MatchesItem extends React.Component {
    * Data:
    *
    {
-      "_id": "539555566c34b55231df839c",
+      "_id": "ABC123",
       "closed": false,
       "common_friend_count": 0,
       "common_like_count": 0,
@@ -21,10 +21,10 @@ export class MatchesItem extends React.Component {
       "message_count": 0,
       "messages": [
         {
-          "_id": "53dde5c29fceea980afbadcc",
-          "match_id": "539555566c34b55231df839c",
-          "to": "530adcf86ae5b18b64000370",
-          "from": "5393cb7eb367bafc7d39737f",
+          "_id": "ABC123",
+          "match_id": "ABC123",
+          "to": "ABC123",
+          "from": "ABC123",
           "message": "So how was your lebaran?",
           "sent_date": "2014-08-03T07:33:22.957Z",
           "created_date": "2014-08-03T07:33:22.957Z",
@@ -34,37 +34,37 @@ export class MatchesItem extends React.Component {
       ],
       "muted": false,
       "participants": [
-        "530adcf86ae5b18b64000370"
+        "ABC123"
       ],
       "pending": false,
       "not_following": {
-        "5393cb7eb367bafc7d39737f": false,
-        "530adcf86ae5b18b64000370": false
+        "ABC123": false,
+        "ABC123": false
       },
       "is_super_like": false,
       "person": {
-        "_id": "530adcf86ae5b18b64000370",
+        "_id": "ABC123",
         "bio": "",
         "birth_date": "1995-09-07T05:49:22.527Z",
         "gender": 1,
-        "name": "Nadya",
+        "name": "Person",
         "ping_time": "2016-08-21T08:04:56.712Z",
         "photos": [
           {
             "selectRate": 0.09638554216867468,
             "successRate": 0.3880597014925373,
-            "fileName": "b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg",
-            "id": "b7e8b99a-5194-490e-849b-0d9dc0cd5b37",
+            "fileName": "...jpg",
+            "id": "...",
             "extension": "jpg",
             "processedFiles": [
               {
                 "width": 640,
                 "height": 640,
-                "url": "http://images.gotinder.com/530adcf86ae5b18b64000370/640x640_b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg"
+                "url": "http://images.gotinder.com/...jpg"
               }
               ...
             ],
-            "url": "http://images.gotinder.com/530adcf86ae5b18b64000370/b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg"
+            "url": "http://images.gotinder.com/...jpg"
           }
         ],
         "badges": []

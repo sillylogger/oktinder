@@ -9,18 +9,18 @@ export class Thumbnail extends React.Component {
    {
       "selectRate": 0.09638554216867468,
       "successRate": 0.3880597014925373,
-      "fileName": "b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg",
-      "id": "b7e8b99a-5194-490e-849b-0d9dc0cd5b37",
+      "fileName": "...jpg",
+      "id": "...",
       "extension": "jpg",
       "processedFiles": [
         {
           "width": 640,
           "height": 640,
-          "url": "http://images.gotinder.com/530adcf86ae5b18b64000370/640x640_b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg"
+          "url": "http://images.gotinder.com/...jpg"
         }
         ...
       ],
-      "url": "http://images.gotinder.com/530adcf86ae5b18b64000370/b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg"
+      "url": "http://images.gotinder.com/...jpg"
    }
   */
 
