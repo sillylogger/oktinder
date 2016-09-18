@@ -3,20 +3,47 @@ import styles from "./thumbnail.css"
 
 export class Thumbnail extends React.Component {
 
+  /*
+   * Photo:
+   *
+   {
+      "selectRate": 0.09638554216867468,
+      "successRate": 0.3880597014925373,
+      "fileName": "b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg",
+      "id": "b7e8b99a-5194-490e-849b-0d9dc0cd5b37",
+      "extension": "jpg",
+      "processedFiles": [
+        {
+          "width": 640,
+          "height": 640,
+          "url": "http://images.gotinder.com/530adcf86ae5b18b64000370/640x640_b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg"
+        }
+        ...
+      ],
+      "url": "http://images.gotinder.com/530adcf86ae5b18b64000370/b7e8b99a-5194-490e-849b-0d9dc0cd5b37.jpg"
+   }
+  */
+
+  openLightboxTo(e) {
+    e.preventDefault();
+    this.props.openLightboxTo(this.props.index);
+  }
+
   render() {
+    let photo = this.props.photo;
     let footer = null;
 
-    if(this.props.data.selectRate || this.props.data.successRate) {
-      footer = <footer className={styles.thumbnail_footer}>
-                <span className={styles.thumbnail_selectRate}>Select: {this.round(this.props.data.selectRate)}</span>
-                <span className={styles.thumbnail_successRate}>Success: {this.round(this.props.data.successRate)}</span>
+    if(photo.selectRate || photo.successRate) {
+      footer = <footer className={styles.footer}>
+                <span className={styles.selectRate}>select: {this.round(photo.selectRate)}</span>
+                <span className={styles.successRate}>success: {this.round(photo.successRate)}</span>
               </footer>;
     }
 
     return (
           <figure className={styles.thumbnail}>
-            <a href={this.props.data.url} target="_blank">
-              <img src={this.props.data.url} alt={this.props.data.fileName} className={styles.thumbnail_img} />
+            <a href={photo.url} target="_blank" onClick={this.openLightboxTo.bind(this)}>
+              <img src={photo.url} alt={photo.fileName} className={styles.img} />
             </a>
             {footer}
           </figure>

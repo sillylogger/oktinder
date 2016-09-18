@@ -8,25 +8,17 @@ export class Matches extends React.Component {
     super(props, context);
 
     this.state = {
-      matches: this.matchesByPingTime(this.props.data).slice(0, 50),
-      activeMatchIndex: -1
+      matches: this.matchesByPingTime(this.props.data).slice(0, 50)
     };
-  }
-
-  componentDidMount() {
-    document.getElementById('key').focus();
-  }
-
-  setActiveMatch(match) {
-    this.setState({
-      activeMatchIndex: match.props.index
-    });
   }
 
   //
   // Trying to navigate with the up and down arrow isn't working so well..
-  // 
-  // onKeyUp={this.navigateActiveMatch.bind(this)}
+  //
+  // componentDidMount() {
+  //   document.getElementById('key').focus();
+  // }
+  //
   // navigateActiveMatch(e) {
   //   let index = this.state.activeMatchIndex;
   //
@@ -44,14 +36,15 @@ export class Matches extends React.Component {
   //     activeMatchIndex: index
   //   });
   // }
+  //
+  // onKeyUp={this.navigateActiveMatch.bind(this)}
+  //
 
   render() {
     let items = this.state.matches.map(function(itemData, index){
       return <MatchesItem key={index}
                           data={itemData}
-                          index={index}
-                          active={this.state.activeMatchIndex === index}
-                          setActiveMatch={this.setActiveMatch.bind(this)} />
+                          index={index} />
     }.bind(this))
 
     return (

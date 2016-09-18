@@ -1,11 +1,6 @@
-.match,
-.active_match {
+.match {
   border-bottom: 2px solid lightgrey;
   padding: 1rem;
-}
-
-.active_match {
-  background: #F8F8F8;
 }
 
 .header {
@@ -37,5 +32,8 @@
 .thumbnails {
   width: 100%;
   overflow: hidden;
+}
+
+.lightbox {
 }
 
