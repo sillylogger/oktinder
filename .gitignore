@@ -6,3 +6,4 @@ config.yml
 tmp
 
 *.json
+*.chls
