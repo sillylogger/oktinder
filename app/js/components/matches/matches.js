@@ -1,6 +1,7 @@
 import React from "react"
-import {MatchesItem} from "./item/item.js"
+import { MatchesItem } from "./item/item.js"
 import styles from "./matches.css"
+import { MatchesStore } from "./../../stores/matches_store.js"
 
 export class Matches extends React.Component {
 
@@ -8,7 +9,7 @@ export class Matches extends React.Component {
     super(props, context);
 
     this.state = {
-      matches: this.matchesByPingTime(this.props.data).slice(0, 50)
+      matches: MatchesStore.byPingTime(this.props.data).slice(0, 50)
     };
   }
 
@@ -55,11 +56,4 @@ export class Matches extends React.Component {
     )
   }
 
-  matchesByPingTime(data) {
-    return data.filter(function(match) {
-      return match.person !== undefined;
-    }).sort(function(a,b) {
-      return (new Date(b.person.ping_time)) - (new Date(a.person.ping_time));
-    });
-  }
 }
