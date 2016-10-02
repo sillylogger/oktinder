@@ -27,6 +27,7 @@
 .bio {
   margin-bottom: 1rem;
   font-family: serif;
+  white-space: pre-wrap;
 }
 
 .thumbnails {
