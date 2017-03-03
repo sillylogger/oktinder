@@ -2,9 +2,9 @@
 export class PhotosStore {
 
   static withSuccess(data) {
-    let unflattenedPhotos = data.filter(function(match) {
+    let unflattenedPhotos = data.filter((match) => {
       return match.person !== undefined;
-    }).map(function(match) {
+    }).map((match) => {
       return match.person.photos;
     });
 
