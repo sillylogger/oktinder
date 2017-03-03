@@ -9,7 +9,7 @@ export class Matches extends React.Component {
     super(props, context);
 
     this.state = {
-      matches: MatchesStore.byPingTime(this.props.data).slice(0, 50)
+      matches: MatchesStore.byPingTime(this.props.data)
     };
   }
 
