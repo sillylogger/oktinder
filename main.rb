@@ -1,6 +1,7 @@
 #! /usr/bin/env ruby
 
 require 'bundler'
+require 'fileutils'
 Bundler.require(:default)
 
 require './config'
@@ -21,26 +22,35 @@ def headers
   }
 end
 
+def update? name
+  return true unless File.exists? name
+
+  one_day_ago = Time.now - 60 * 60 * 24
+  File.mtime(name) < one_day_ago
+end
+
+
+def archive! name
+  return unless File.exists? name
+
+  t = File.mtime name
+  FileUtils.mv name, "updates-#{t.year}-#{t.month}-#{t.day}.json"
+end
+
 filename = 'updates.json'
-one_day_ago = Time.now - 60 * 60 * 24
 
-if !File.exists?(filename) ||
-    File.ctime(filename) < one_day_ago
+if update? filename
+  puts "I going to update.json"
 
-  puts "I am going to update.json"
+  archive! filename
 
   json = updates ''
-
-  File.delete(filename) if File.exists?(filename)
-
   File.open filename, 'w' do |f|
     f.write json.to_json
   end
 
 else
-
   puts "I am not going to update.json"
-
 end
 
 #
