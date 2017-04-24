@@ -107,7 +107,9 @@ export class MatchesItem extends React.Component {
         <header className={styles.header}>
           <h3 className={styles.name}>{person.name}</h3>
           <time className={styles.age} data={person.birth_date}>{moment(person.birth_date).fromNow(true)} old</time>
-          <time className={styles.age} data={person.ping_time}>last pinged: {moment(person.ping_time).fromNow()}</time>
+          <time className={styles.age} data-ping-time={person.ping_time} data-last-activity-date={this.props.data.last_activity_date}>
+            last activity: {moment(this.props.data.last_activity_date).fromNow()}
+          </time>
         </header>
         <pre className={styles.bio}>
           {person.bio}

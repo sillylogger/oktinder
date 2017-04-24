@@ -9,7 +9,7 @@ export class Matches extends React.Component {
     super(props, context);
 
     this.state = {
-      matches: MatchesStore.byPingTime(this.props.data)
+      matches: MatchesStore.sorted(this.props.data)
     };
   }
 
